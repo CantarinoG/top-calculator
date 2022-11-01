@@ -1,0 +1,33 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: 2px solid red;
+}
+
+main {
+    padding: 5% 35%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main .display {
+    flex: 2;
+}
+
+main .keys-container {
+    flex: 8;
+    display: flex;
+    flex-direction: column;
+}
+
+main .keys-container .row {
+    flex: 1;
+    display: flex;
+    align-items: stretch;
+}
+
+main .keys-container .row button {
+    flex: 1;
+}
