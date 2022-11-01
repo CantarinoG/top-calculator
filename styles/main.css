@@ -1,8 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap');
+:root {
+    --gunmetal: #292F36;
+    --turquoise: #34ADA4;
+    --cream: #F7FFF7;
+    --gray: #909797;
+    --roboto: 'Roboto', sans-serif;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    border: 2px solid red;
+    /*border: 2px solid red;*/
+}
+
+body {
+    background-color: var(--gunmetal);
 }
 
 main {
@@ -14,6 +27,26 @@ main {
 
 main .display {
     flex: 2;
+    display: flex;
+    flex-direction: column;
+    text-align: end;
+    font-family: var(--roboto);
+}
+
+main .display .upper {
+    flex: 1;
+    color: var(--gray);
+    font-weight: 100;
+}
+
+main .display .lower {
+    flex: 3;
+    color: var(--cream);
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    font-size: 3.5em;
+    border-bottom: 0.5px solid var(--gray);
 }
 
 main .keys-container {
@@ -30,4 +63,31 @@ main .keys-container .row {
 
 main .keys-container .row button {
     flex: 1;
+}
+
+button {
+    border: none;
+    background-color: transparent;
+    font-family: var(--roboto);
+    color: var(--cream);
+    font-size: x-large;
+}
+
+button:hover {
+    cursor: pointer;
+    border-radius: 20%;
+    filter: brightness(0.6);
+}
+
+button:hover:active {
+    transform: scale(1.2);
+}
+
+.color {
+    color: var(--turquoise);
+}
+
+#equal {
+    border-radius: 20%;
+    background-color: var(--turquoise);
 }
