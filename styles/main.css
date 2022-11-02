@@ -91,3 +91,9 @@ button:hover:active {
     border-radius: 20%;
     background-color: var(--turquoise);
 }
+
+@media (max-width: 1024px) {
+    main {
+        padding: 20px;
+    }
+}
