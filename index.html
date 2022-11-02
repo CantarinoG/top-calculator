@@ -6,43 +6,44 @@
     <title>Calculator</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="styles/main.css">
+    <script src="script/main.js" defer></script>
 </head>
 
 <body>
 
     <main>
         <div class="display">
-            <output class="upper">9 + 6 =</output>
-            <output class="lower">15</output>
+            <output class="upper"></output>
+            <output class="lower">0</output>
         </div>
         <div class="keys-container">
             <div class="row">
-                <button class="large color">Clear</button>
-                <button class="large color">Delete</button>
+                <button id="c" class="large color">Clear</button>
+                <button id="delete" class="large color">Delete</button>
             </div>
             <div class="row">
-                <button>7</button>
-                <button>8</button>
-                <button>9</button>
-                <button class="color">%</button>
+                <button id="seven">7</button>
+                <button id="eight">8</button>
+                <button id="nine">9</button>
+                <button id="div" class="color">÷</button>
             </div>
             <div class="row">
-                <button>4</button>
-                <button>5</button>
-                <button>6</button>
-                <button class="color">x</button>
+                <button id="four">4</button>
+                <button id="five">5</button>
+                <button id="six">6</button>
+                <button id="x" class="color">x</button>
             </div>
             <div class="row">
-                <button>1</button>
-                <button>2</button>
-                <button>3</button>
-                <button class="color">-</button>
+                <button id="one">1</button>
+                <button id="two">2</button>
+                <button id="three">3</button>
+                <button id="minus" class="color">-</button>
             </div>
             <div class="row">
-                <button>.</button>
-                <button>0</button>
+                <button id="dec">.</button>
+                <button id="zero">0</button>
                 <button id="equal">=</button>
-                <button class="color">+</button>
+                <button id="sum" class="color">+</button>
             </div>
         </div>
     </main>
