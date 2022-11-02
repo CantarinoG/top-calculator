@@ -33,6 +33,8 @@ numKeys.forEach(key => {
     })
 });
 
+
+
 btnDec.addEventListener('click', () => {
     if (currentNum.includes('.')) {
         return;
@@ -54,6 +56,7 @@ operatorKeys.forEach(key => {
         } else {
             anteriorNum = operate(anteriorNum, parseFloat(currentNum.join("")), currentOperator);
             upperDisplay.textContent = anteriorNum + " " + key.textContent;
+            lowerDisplay.textContent = anteriorNum;
 
         }
         currentNum = [0];
@@ -83,6 +86,12 @@ btnDel.addEventListener('click', () => {
     if (parseFloat(currentNum.join("")) != 0) {
         currentNum.pop();
         lowerDisplay.textContent = parseFloat(currentNum.join(""));
+    } else {
+        anteriorNum = 0;
+        currentNum = [0];
+        currentOperator = '';
+        lowerDisplay.textContent = 0;
+        upperDisplay.textContent = '';
     }
 });
 
@@ -91,9 +100,65 @@ function operate(num1, num2, operator) {
         return num1 + num2;
     } else if (operator == "-") {
         return num1 - num2;
-    } else if (operator == "x") {
+    } else if (operator == "x" || operator == '*') {
         return num1 * num2;
     } else {
         return num1 / num2;
     }
 }
+
+//Keyboard support
+
+let kp = ''; //keyPressed
+
+document.addEventListener('keydown', (event) => {
+    kp = event.key;
+
+    if (/^\d+$/.test(kp)) { //if kp contains a number
+        currentNum.push(kp);
+        lowerDisplay.textContent = parseFloat(currentNum.join(""));
+    } else if (kp == '+' || kp == '-' || kp == '/' || kp == '*') {
+        if (anteriorNum == 0) {
+            anteriorNum = parseFloat(currentNum.join(""));
+            upperDisplay.textContent = anteriorNum + " " + kp;
+        } else if (anteriorNum != 0 && parseFloat(currentNum.join("")) == 0) {
+            upperDisplay.textContent = anteriorNum + " " + kp;
+        } else {
+            anteriorNum = operate(anteriorNum, parseFloat(currentNum.join("")), currentOperator);
+            upperDisplay.textContent = anteriorNum + " " + kp;
+            lowerDisplay.textContent = anteriorNum;
+        }
+        currentNum = [0];
+        currentOperator = kp;
+    } else if (kp == '.') {
+        if (currentNum.includes('.')) {
+            return;
+        } else {
+            currentNum.push('.');
+        }
+    } else if (kp == 'Enter' || kp == '=') {
+        if (parseFloat(currentNum.join("")) != 0) {
+            anteriorNum = operate(anteriorNum, parseFloat(currentNum.join("")), currentOperator);
+            lowerDisplay.textContent = anteriorNum;
+            upperDisplay.textContent = anteriorNum;
+            currentNum = [0];
+        }
+    } else if (kp == 'c' || kp == 'C') {
+        anteriorNum = 0;
+        currentNum = [0];
+        currentOperator = '';
+        lowerDisplay.textContent = 0;
+        upperDisplay.textContent = '';
+    } else if (kp == 'Backspace') {
+        if (parseFloat(currentNum.join("")) != 0) {
+            currentNum.pop();
+            lowerDisplay.textContent = parseFloat(currentNum.join(""));
+        } else {
+            anteriorNum = 0;
+            currentNum = [0];
+            currentOperator = '';
+            lowerDisplay.textContent = 0;
+            upperDisplay.textContent = '';
+        }
+    }
+});
